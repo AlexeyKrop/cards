@@ -1,6 +1,6 @@
 import React from 'react';
 
-const NewPassword = () => {
+const CreatePassword = () => {
   return (
     <div>
       <h2>ENTER NEW PASSWORD</h2>
@@ -8,4 +8,4 @@ const NewPassword = () => {
   );
 };
 
-export default NewPassword;
+export default CreatePassword;
