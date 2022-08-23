@@ -1,8 +1,10 @@
 import { Dispatch } from 'redux'
-import { profileAPI, UserType } from '../../api/api'
+import { authMe, profileAPI, UserType } from '../../api/api'
 
 const initialState = {
-  user: {} as UserType,
+  user: {
+    name: '',
+  } as UserType,
 }
 type InitialStateType = typeof initialState
 export const profileReducer = (
@@ -10,6 +12,11 @@ export const profileReducer = (
   action: ProfileAT
 ): InitialStateType => {
   switch (action.type) {
+    case 'SET-USER':
+      return {
+        ...state,
+        user: action.user,
+      }
     case 'CHANGE-NAME':
       return {
         ...state,
@@ -21,20 +28,33 @@ export const profileReducer = (
 }
 
 //ACTIONS CREATOR
-export const changeNameAC = (updatedUser: UpdateUserType) => ({ type: 'CHANGE-NAME', updatedUser })
-
+export const changeNameAC = (updatedUser: UpdateUserType) =>
+  ({ type: 'CHANGE-NAME', updatedUser } as const)
+export const setUserAC = (user: UserType) => ({ type: 'SET-USER', user } as const)
 //THUNK
+export const setUserTC = () => {
+  return (dispatch: any) => {
+    authMe.me().then(res => {
+      dispatch(setUserAC(res.data))
+    })
+  }
+}
 export const changeNameTC = (name: string) => (dispatch: Dispatch) => {
   // dispatch(changeNameAC(name))
   profileAPI
     .changeUserName(name)
-    .then(res => dispatch(changeNameAC(res.data.updatedUser)))
+    .then(res => {
+      console.log(res.data.updatedUser)
+      dispatch(changeNameAC(res.data.updatedUser))
+      dispatch(setUserAC(res.data.updatedUser))
+    })
     .catch(err => console.log(err))
 }
 
 //TYPE
-export type ProfileAT = ChangeNameAT
+export type ProfileAT = ChangeNameAT | SetUserAT
 export type ChangeNameAT = ReturnType<typeof changeNameAC>
+export type SetUserAT = ReturnType<typeof setUserAC>
 export type UpdateUserType = {
   avatar: null
   created: string

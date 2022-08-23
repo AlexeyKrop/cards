@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../customHooks/hooks'
 import { Card } from './Card/Card'
-import { changeNameTC } from '../../bll/reducers/profileReducer'
-import { UserType } from '../../api/api'
-import { authUserTC } from '../../bll/reducers/authReducer'
+import { changeNameTC, setUserTC } from '../../bll/reducers/profileReducer'
 
 export const Profile = () => {
-  const user = useAppSelector(state => state.app.user)
+  const user = useAppSelector(state => state.profile.user)
   console.log(user)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(authUserTC())
+    if (!user) {
+      return
+    }
+    dispatch(setUserTC())
   }, [])
 
   const changeUserNameValue = (name: string, avatar?: string) => {
