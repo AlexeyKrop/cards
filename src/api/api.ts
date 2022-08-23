@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_BACK_URL || 'http://localhost:7542/2.0/',
@@ -14,10 +14,17 @@ export const authRegistration = {
     return instance.post<RegisterDataType>(`/auth/register`, params)
   },
 }
-
-export const authLogin = {
+export const profileAPI = {
+  changeUserName(name: string, avatar?: string) {
+    return instance.put(`auth/me`, { name, avatar })
+  },
+}
+export const authMe = {
   login(params: RegistrationParamsType) {
-    return instance.post(`/auth/login`, params)
+    return instance.post<UserType>(`/auth/login`, params)
+  },
+  me() {
+    return instance.post('/auth/me', {})
   },
 }
 export type RegisterDataType = {
@@ -29,7 +36,7 @@ export type UserType = {
   isAdmin: boolean
   name: string
   publicCardPacksCount: number
-  rememberMe: false
+  rememberMe: boolean
   token: string
   tokenDeathTime: number
   updated: string

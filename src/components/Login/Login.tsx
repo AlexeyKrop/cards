@@ -1,10 +1,14 @@
 import React from 'react'
-import { useAppDispatch } from '../../customHooks/hooks'
+import { useAppDispatch, useAppSelector } from '../../customHooks/hooks'
 import { useFormik } from 'formik'
 import { Button, TextField } from '@mui/material'
 import { loginTC } from '../../bll/reducers/authReducer'
+import { Navigate } from 'react-router-dom'
+import { PATH } from '../../Pages'
 
 export const Login = () => {
+  const { user, isLogin } = useAppSelector(state => state.app)
+  console.log(user, isLogin)
   const dispatch = useAppDispatch()
   const formik = useFormik({
     initialValues: {
@@ -15,6 +19,9 @@ export const Login = () => {
       dispatch(loginTC(values))
     },
   })
+  if (isLogin) {
+    return <Navigate to={PATH.PROFILE} />
+  }
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email Address</label>

@@ -1,8 +1,12 @@
 import { AnyAction, applyMiddleware, combineReducers, createStore } from 'redux'
 import thunk, { ThunkDispatch } from 'redux-thunk'
 import { registrationReducer } from '../reducers/registartionReducer'
+import { authReducer } from '../reducers/authReducer'
+import { profileReducer } from '../reducers/profileReducer'
 
 const rootReducers = combineReducers({
+  profile: profileReducer,
+  app: authReducer,
   registration: registrationReducer,
 })
 
