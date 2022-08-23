@@ -1,12 +1,58 @@
-export const registrationReducer = (state: any, action: any): any => {
-  return state
+import { authRegistration, RegisterDataType, RegistrationParamsType } from '../../api/api'
+import { AxiosError } from 'axios'
+
+export type RegisterStateType = {
+  loading: boolean
+  success: boolean
+  error: string
+}
+
+export const initialState: RegisterStateType = {
+  loading: false,
+  success: false,
+  error: '',
+}
+export const registrationReducer = (
+  state: any = initialState,
+  action: registrationReducerType
+): any => {
+  switch (action.type) {
+    case 'SET-SUCCESS':
+      return {
+        ...state,
+        success: action.success,
+      }
+    case 'SET-ERROR':
+      return {
+        ...state,
+        error: action.error,
+      }
+    default:
+      return state
+  }
 }
 
 //ACTIONS CREATOR
-export const registrationAC = (isRegistration: boolean) => ({
-  type: 'SET-REGISTRATION',
-  isRegistration,
-})
+export const registrationSuccessAC = (success: boolean) =>
+  ({
+    type: 'SET-SUCCESS',
+    success,
+  } as const)
+export const registrationErrorAC = (error: string) =>
+  ({
+    type: 'SET-ERROR',
+    error,
+  } as const)
+
+//THUNK
+export const registrationTC = (data: RegistrationParamsType) => (dispatch: any) => {
+  authRegistration
+    .registration(data)
+    .then(res => console.log(res))
+    .catch((error: AxiosError<RegisterDataType>) => console.log(error.response?.data.error))
+}
 
 //TYPE
-type RegistrationAT = ReturnType<typeof registrationAC>
+type RegistrationSuccessAT = ReturnType<typeof registrationSuccessAC>
+type RegistrationErrorAT = ReturnType<typeof registrationErrorAC>
+export type registrationReducerType = RegistrationSuccessAT | RegistrationErrorAT
