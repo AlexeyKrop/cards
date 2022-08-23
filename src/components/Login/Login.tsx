@@ -1,8 +1,8 @@
 import React from 'react'
 import { useAppDispatch } from '../../customHooks/hooks'
 import { useFormik } from 'formik'
-import { registrationTC } from '../../bll/reducers/registartionReducer'
 import { Button, TextField } from '@mui/material'
+import { loginTC } from '../../bll/reducers/authReducer'
 
 export const Login = () => {
   const dispatch = useAppDispatch()
@@ -12,7 +12,7 @@ export const Login = () => {
       password: '',
     },
     onSubmit: values => {
-      dispatch(registrationTC(values))
+      dispatch(loginTC(values))
     },
   })
   return (
