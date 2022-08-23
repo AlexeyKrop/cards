@@ -1,6 +1,9 @@
-import React, {ButtonHTMLAttributes, DetailedHTMLProps} from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
 
-type DefaultButtonPropsType = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+type DefaultButtonPropsType = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>
 
 type ButtonPropsType = DefaultButtonPropsType & {
   name?: string
@@ -11,7 +14,8 @@ export const CustomButton = (props: ButtonPropsType) => {
     props.callBack && props.callBack()
   }
   return (
-    <button className={props.className} onClick={onClickBtnHandler}>{props.name}</button>
-  );
-};
-
+    <button className={props.className} onClick={onClickBtnHandler}>
+      {props.name}
+    </button>
+  )
+}

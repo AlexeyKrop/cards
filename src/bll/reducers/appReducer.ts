@@ -1,5 +1,3 @@
-
-export const appReducer = (state:  any, action: any): any => {
+export const appReducer = (state: any, action: any): any => {
   return state
 }
-
