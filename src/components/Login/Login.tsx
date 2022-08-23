@@ -43,8 +43,8 @@ export const Login = () => {
           Login
         </Button>
       </form>
-      <span>incubatorfriday@gmail.com</span>
-      <span>123FridayIncubator123</span>
+      <h6>incubatorfriday@gmail.com</h6>
+      <h6>123FridayIncubator123</h6>
     </>
   )
 }

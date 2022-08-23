@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom'
 export const Profile = () => {
   const user = useAppSelector(state => state.profile.user)
   const isLogin = useAppSelector(state => state.app.isLogin)
+  console.log(isLogin)
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(setUserTC())

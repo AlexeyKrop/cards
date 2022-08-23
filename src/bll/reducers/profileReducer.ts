@@ -1,5 +1,6 @@
 import { Dispatch } from 'redux'
 import { authMe, profileAPI, UserType } from '../../api/api'
+import { setIsLoginAC } from './authReducer'
 
 const initialState = {
   user: {
@@ -35,6 +36,7 @@ export const setUserAC = (user: UserType) => ({ type: 'SET-USER', user } as cons
 export const setUserTC = () => {
   return (dispatch: any) => {
     authMe.me().then(res => {
+      dispatch(setIsLoginAC(true))
       dispatch(setUserAC(res.data))
     })
   }
