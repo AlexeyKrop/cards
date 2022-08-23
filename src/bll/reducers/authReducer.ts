@@ -1,11 +1,8 @@
 //REDUCER
-import { authMe, RegistrationParamsType, UserType } from '../../api/api'
+import { authMe, RegistrationParamsType } from '../../api/api'
 
 const initialState = {
   isLogin: false,
-  user: {
-    name: '',
-  } as UserType,
 }
 type initialStateType = typeof initialState
 export const authReducer = (state: initialStateType = initialState, action: AuthReducerType) => {

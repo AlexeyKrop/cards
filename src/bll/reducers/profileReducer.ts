@@ -46,7 +46,6 @@ export const changeNameTC = (name: string) => (dispatch: Dispatch) => {
     .then(res => {
       console.log(res.data.updatedUser)
       dispatch(changeNameAC(res.data.updatedUser))
-      dispatch(setUserAC(res.data.updatedUser))
     })
     .catch(err => console.log(err))
 }

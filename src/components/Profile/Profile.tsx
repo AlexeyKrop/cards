@@ -5,14 +5,10 @@ import { changeNameTC, setUserTC } from '../../bll/reducers/profileReducer'
 
 export const Profile = () => {
   const user = useAppSelector(state => state.profile.user)
-  console.log(user)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    if (!user) {
-      return
-    }
     dispatch(setUserTC())
-  }, [])
+  }, [dispatch])
 
   const changeUserNameValue = (name: string, avatar?: string) => {
     dispatch(changeNameTC(name))

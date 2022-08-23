@@ -7,8 +7,7 @@ import { Navigate } from 'react-router-dom'
 import { PATH } from '../../Pages'
 
 export const Login = () => {
-  const { user, isLogin } = useAppSelector(state => state.app)
-  console.log(user, isLogin)
+  const { isLogin } = useAppSelector(state => state.app)
   const dispatch = useAppDispatch()
   const formik = useFormik({
     initialValues: {
