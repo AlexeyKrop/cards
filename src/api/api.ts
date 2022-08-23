@@ -23,6 +23,9 @@ export const authMe = {
   login(params: RegistrationParamsType) {
     return instance.post<UserType>(`/auth/login`, params)
   },
+  logout() {
+    return instance.delete(`/auth/me`)
+  },
   me() {
     return instance.post('/auth/me', {})
   },

@@ -26,8 +26,12 @@ export const loginTC = (data: RegistrationParamsType) => (dispatch: any) => {
     dispatch(setIsLoginAC(true))
   })
 }
+export const logoutTC = () => (dispatch: any) => {
+  authMe.logout().then(res => {
+    dispatch(setIsLoginAC(false))
+  })
+}
 
 //TYPE
-
 export type SetIsLoginAT = ReturnType<typeof setIsLoginAC>
 export type AuthReducerType = SetIsLoginAT

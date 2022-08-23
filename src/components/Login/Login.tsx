@@ -22,25 +22,29 @@ export const Login = () => {
     return <Navigate to={PATH.PROFILE} />
   }
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <label htmlFor="email">Email Address</label>
-      <TextField
-        id="email"
-        name="email"
-        type="email"
-        onChange={formik.handleChange}
-        value={formik.values.email}
-      />
-      <TextField
-        id="password"
-        name="password"
-        type="password"
-        onChange={formik.handleChange}
-        value={formik.values.password}
-      />
-      <Button type="submit" variant="contained">
-        Login
-      </Button>
-    </form>
+    <>
+      <form onSubmit={formik.handleSubmit}>
+        <label htmlFor="email">Email Address</label>
+        <TextField
+          id="email"
+          name="email"
+          type="email"
+          onChange={formik.handleChange}
+          value={formik.values.email}
+        />
+        <TextField
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+        />
+        <Button type="submit" variant="contained">
+          Login
+        </Button>
+      </form>
+      <span>incubatorfriday@gmail.com</span>
+      <span>123FridayIncubator123</span>
+    </>
   )
 }

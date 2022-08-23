@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ChangeEvent, useCallback, useState } from 'react'
+import { ChangeEvent, useCallback, useEffect, useState } from 'react'
 import { Button, InputAdornment } from '@mui/material'
 import { BiEditAlt } from '@react-icons/all-files/bi/BiEditAlt'
 import s from './EditableSpan.module.css'
@@ -15,7 +15,7 @@ type EditableSpanType = {
 export const EditableSpan = React.memo((props: EditableSpanType) => {
   console.log('EditableSpan render', props.title)
   let [editMode, setEditMode] = useState(false)
-  let [inputValue, setInputValue] = useState(props.title)
+  let [inputValue, setInputValue] = useState('')
   const onClickDoubleHandler = () => {
     !props.disabled && setEditMode(!editMode)
   }
@@ -30,7 +30,9 @@ export const EditableSpan = React.memo((props: EditableSpanType) => {
     },
     [props]
   )
-
+  useEffect(() => {
+    setInputValue(props.title)
+  }, [props.title])
   return (
     <>
       {!editMode ? (

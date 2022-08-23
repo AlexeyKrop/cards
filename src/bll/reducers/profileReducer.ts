@@ -44,7 +44,6 @@ export const changeNameTC = (name: string) => (dispatch: Dispatch) => {
   profileAPI
     .changeUserName(name)
     .then(res => {
-      console.log(res.data.updatedUser)
       dispatch(changeNameAC(res.data.updatedUser))
     })
     .catch(err => console.log(err))
