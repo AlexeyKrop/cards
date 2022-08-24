@@ -2,6 +2,7 @@ import { AxiosError } from 'axios'
 import { Dispatch } from 'redux'
 import { authMe } from '../../api/api'
 import { setIsLoginAC } from './authReducer'
+import { setUserAC } from './profileReducer'
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 export enum resultCodeStatus {
@@ -46,14 +47,14 @@ export const appReducer = (
 export const appInitialTC = () => (dispatch: Dispatch) => {
   dispatch(setAppLoadAC(true))
   authMe
+
     .me()
     .then(res => {
       // if (res.data.resultCode === resultCodeStatus.success) {
       dispatch(setIsLoginAC(true))
-      // } else {
-      //   handleServerAppError(dispatch, res.data)
-      // }
+      dispatch(setUserAC(res.data))
       dispatch(setAppInitialAC(true))
+      dispatch(setAppStatusAC('succeeded'))
     })
     .catch((error: AxiosError) => {
       // handleServerNetworkError(dispatch, error.message, 'failed')

@@ -5,15 +5,10 @@ import { Pages } from './Pages'
 import { Header } from './components/Header/Header'
 import { useAppDispatch, useAppSelector } from './customHooks/hooks'
 import CircularProgress from '@mui/material/CircularProgress'
-import { setUserTC } from './bll/reducers/profileReducer'
 import { appInitialTC } from './bll/reducers/appReducer'
 
 function App() {
   const isInitialized = useAppSelector(state => state.init.initialized)
-  console.log(isInitialized)
-
-  const user = useAppSelector(state => state.profile.user)
-  const isLogin = useAppSelector(state => state.app.isLogin)
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(appInitialTC())

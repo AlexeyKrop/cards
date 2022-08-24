@@ -19,6 +19,7 @@ export const Card = (props: CardPropsTYpe) => {
   const onClickHandler = () => {
     dispatch(logoutTC())
   }
+
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>{props.title ? props.title : 'Personal Information'}</h2>
