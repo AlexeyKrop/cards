@@ -1,5 +1,6 @@
 //REDUCER
 import { authMe, RegistrationParamsType } from '../../api/api'
+import { setUserAC } from './profileReducer'
 
 const initialState = {
   isLogin: false,
@@ -24,6 +25,7 @@ export const setIsLoginAC = (isLogin: boolean) => ({ type: 'SET-IS-LOGIN', isLog
 export const loginTC = (data: RegistrationParamsType) => (dispatch: any) => {
   authMe.login(data).then(res => {
     dispatch(setIsLoginAC(true))
+    dispatch(setUserAC(res.data))
   })
 }
 export const logoutTC = () => (dispatch: any) => {

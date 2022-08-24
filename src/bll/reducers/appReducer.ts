@@ -45,19 +45,12 @@ export const appReducer = (
 }
 //THUNKS
 export const appInitialTC = () => (dispatch: Dispatch) => {
-  dispatch(setAppLoadAC(true))
   authMe
-
     .me()
     .then(res => {
-      // if (res.data.resultCode === resultCodeStatus.success) {
-      dispatch(setIsLoginAC(true))
       dispatch(setUserAC(res.data))
+      dispatch(setIsLoginAC(true))
       dispatch(setAppInitialAC(true))
-      dispatch(setAppStatusAC('succeeded'))
-    })
-    .catch((error: AxiosError) => {
-      // handleServerNetworkError(dispatch, error.message, 'failed')
     })
     .finally(() => dispatch(setAppInitialAC(true)))
 }

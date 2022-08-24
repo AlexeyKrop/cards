@@ -4,19 +4,13 @@ import { Card } from './Card/Card'
 import { changeNameTC } from '../../bll/reducers/profileReducer'
 import { Navigate } from 'react-router-dom'
 import LinearProgress from '@mui/material/LinearProgress'
+import { loginTC } from '../../bll/reducers/authReducer'
 
 export const Profile = () => {
   const user = useAppSelector(state => state.profile.user)
   const isLogin = useAppSelector(state => state.app.isLogin)
-  const status = useAppSelector(state => state.init.status)
-  const dispatch = useAppDispatch()
   console.log(user)
-  // useEffect(() => {
-  //   if (user.name === '') {
-  //     return
-  //   }
-  //   dispatch(setUserTC())
-  // }, [dispatch])
+  const dispatch = useAppDispatch()
   if (!isLogin) {
     return <Navigate to="/login" />
   }
@@ -25,7 +19,6 @@ export const Profile = () => {
   }
   return (
     <>
-      {status === 'loading' && <LinearProgress sx={{ position: 'absolute', width: '100%' }} />}
       <Card user={user} changeUserNameValue={changeUserNameValue} />
     </>
   )

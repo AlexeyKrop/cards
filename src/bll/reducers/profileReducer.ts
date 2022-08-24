@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux'
 import { authMe, profileAPI, UserType } from '../../api/api'
-import { setAppLoadAC } from './appReducer'
+import { setAppLoadAC, setAppStatusAC } from './appReducer'
 import { setIsLoginAC } from './authReducer'
 
 const initialState = {
@@ -33,20 +33,7 @@ export const profileReducer = (
 export const changeNameAC = (updatedUser: UpdateUserType) =>
   ({ type: 'CHANGE-NAME', updatedUser } as const)
 export const setUserAC = (user: UserType) => ({ type: 'SET-USER', user } as const)
-//THUNK
-// export const setUserTC = () => {
-//   return (dispatch: any) => {
-//     authMe
-//       .me()
-//       .then(res => {
-//         dispatch(setIsLoginAC(true))
-//         dispatch(setUserAC(res.data))
-//       })
-//       .finally(() => dispatch(setAppLoadAC(false)))
-//   }
-// }
 export const changeNameTC = (name: string) => (dispatch: Dispatch) => {
-  // dispatch(changeNameAC(name))
   profileAPI
     .changeUserName(name)
     .then(res => {
