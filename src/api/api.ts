@@ -27,7 +27,7 @@ export const authMe = {
     return instance.delete(`/auth/me`)
   },
   me() {
-    return instance.post('/auth/me', {})
+    return instance.post('/auth/me')
   },
 }
 export type RegisterDataType = {

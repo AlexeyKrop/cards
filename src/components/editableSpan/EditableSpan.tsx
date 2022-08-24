@@ -17,6 +17,7 @@ export const EditableSpan = React.memo((props: EditableSpanType) => {
   let [editMode, setEditMode] = useState(false)
   let [inputValue, setInputValue] = useState('')
   const onClickDoubleHandler = () => {
+    setInputValue(props.title)
     !props.disabled && setEditMode(!editMode)
   }
   const onClickHandler = () => {
@@ -30,9 +31,6 @@ export const EditableSpan = React.memo((props: EditableSpanType) => {
     },
     [props]
   )
-  useEffect(() => {
-    setInputValue(props.title)
-  }, [props.title])
   return (
     <>
       {!editMode ? (
