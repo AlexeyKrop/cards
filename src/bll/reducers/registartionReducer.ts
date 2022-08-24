@@ -1,5 +1,6 @@
 import { authRegistration, RegisterDataType, RegistrationParamsType } from '../../api/api'
 import { AxiosError } from 'axios'
+import { setAppInitialAC } from './appReducer'
 
 export type RegisterStateType = {
   loading: boolean
@@ -50,6 +51,7 @@ export const registrationTC = (data: RegistrationParamsType) => (dispatch: any) 
     .registration(data)
     .then(res => console.log(res))
     .catch((error: AxiosError<RegisterDataType>) => console.log(error.response?.data.error))
+    .finally(() => setAppInitialAC(true))
 }
 
 //TYPE
