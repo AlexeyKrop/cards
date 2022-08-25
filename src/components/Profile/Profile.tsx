@@ -9,7 +9,6 @@ import { loginTC } from '../../bll/reducers/authReducer'
 export const Profile = () => {
   const user = useAppSelector(state => state.profile.user)
   const isLogin = useAppSelector(state => state.app.isLogin)
-  console.log(user)
   const dispatch = useAppDispatch()
   if (!isLogin) {
     return <Navigate to="/login" />
