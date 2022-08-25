@@ -50,7 +50,7 @@ export const appInitialTC = () => (dispatch: Dispatch) => {
     .then(res => {
       dispatch(setUserAC(res.data))
       dispatch(setIsLoginAC(true))
-      dispatch(setAppInitialAC(true))
+      // dispatch(setAppInitialAC(true))
     })
     .finally(() => dispatch(setAppInitialAC(true)))
 }
