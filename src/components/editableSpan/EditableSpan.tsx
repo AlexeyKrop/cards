@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { ChangeEvent, useCallback, useEffect, useState } from 'react'
+
 import { Button, InputAdornment } from '@mui/material'
 import { BiEditAlt } from '@react-icons/all-files/bi/BiEditAlt'
-import s from './EditableSpan.module.css'
 
 import { CssTextField } from './CssCustomField'
+import s from './EditableSpan.module.css'
 
 type EditableSpanType = {
   callBack: (name: string, avatar?: string) => void
@@ -31,6 +32,7 @@ export const EditableSpan = React.memo((props: EditableSpanType) => {
     },
     [props]
   )
+
   return (
     <>
       {!editMode ? (

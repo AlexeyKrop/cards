@@ -1,10 +1,12 @@
 //REDUCER
 import { authMe, RegistrationParamsType } from '../../api/api'
+
 import { setUserAC } from './profileReducer'
 
 const initialState = {
   isLogin: false,
 }
+
 type initialStateType = typeof initialState
 export const authReducer = (state: initialStateType = initialState, action: AuthReducerType) => {
   switch (action.type) {
@@ -14,11 +16,16 @@ export const authReducer = (state: initialStateType = initialState, action: Auth
         isLogin: action.isLogin,
       }
   }
+
   return state
 }
 //ACTIONS
 
-export const setIsLoginAC = (isLogin: boolean) => ({ type: 'SET-IS-LOGIN', isLogin } as const)
+export const setIsLoginAC = (isLogin: boolean) =>
+  ({
+    type: 'SET-IS-LOGIN',
+    isLogin,
+  } as const)
 
 // THUNK
 

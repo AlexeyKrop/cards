@@ -1,15 +1,18 @@
 import React, { useEffect } from 'react'
+
+import CircularProgress from '@mui/material/CircularProgress'
 import { HashRouter } from 'react-router-dom'
+
 import './App.css'
-import { Pages } from './Pages'
+import { appInitialTC } from './bll/reducers/appReducer'
 import { Header } from './components/Header/Header'
 import { useAppDispatch, useAppSelector } from './customHooks/hooks'
-import CircularProgress from '@mui/material/CircularProgress'
-import { appInitialTC } from './bll/reducers/appReducer'
+import { Pages } from './Pages'
 
 function App() {
   const isInitialized = useAppSelector(state => state.init.initialized)
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     dispatch(appInitialTC())
   }, [dispatch])
@@ -20,6 +23,7 @@ function App() {
       </div>
     )
   }
+
   return (
     <div className="App">
       <HashRouter>

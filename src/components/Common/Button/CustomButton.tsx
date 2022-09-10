@@ -13,6 +13,7 @@ export const CustomButton = (props: ButtonPropsType) => {
   const onClickBtnHandler = () => {
     props.callBack && props.callBack()
   }
+
   return (
     <button className={props.className} onClick={onClickBtnHandler}>
       {props.name}

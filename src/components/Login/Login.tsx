@@ -1,9 +1,11 @@
 import React from 'react'
-import { useAppDispatch, useAppSelector } from '../../customHooks/hooks'
-import { useFormik } from 'formik'
+
 import { Button, TextField } from '@mui/material'
-import { loginTC } from '../../bll/reducers/authReducer'
+import { useFormik } from 'formik'
 import { Navigate } from 'react-router-dom'
+
+import { loginTC } from '../../bll/reducers/authReducer'
+import { useAppDispatch, useAppSelector } from '../../customHooks/hooks'
 import { PATH } from '../../Pages'
 
 export const Login = () => {
@@ -18,9 +20,11 @@ export const Login = () => {
       dispatch(loginTC(values))
     },
   })
+
   if (isLogin) {
     return <Navigate to={PATH.PROFILE} />
   }
+
   return (
     <>
       <form onSubmit={formik.handleSubmit}>

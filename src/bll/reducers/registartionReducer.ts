@@ -1,5 +1,7 @@
-import { authRegistration, RegisterDataType, RegistrationParamsType } from '../../api/api'
 import { AxiosError } from 'axios'
+
+import { authRegistration, RegisterDataType, RegistrationParamsType } from '../../api/api'
+
 import { setAppInitialAC } from './appReducer'
 
 export type RegisterStateType = {

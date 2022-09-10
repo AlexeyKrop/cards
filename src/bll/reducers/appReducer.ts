@@ -1,21 +1,26 @@
 import { AxiosError } from 'axios'
 import { Dispatch } from 'redux'
+
 import { authMe } from '../../api/api'
+
 import { setIsLoginAC } from './authReducer'
 import { setUserAC } from './profileReducer'
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+
 export enum resultCodeStatus {
   success = 0,
   error = 1,
   captcha = 10,
 }
+
 const initialState = {
   status: 'loading' as RequestStatusType,
   error: null as null | string,
   initialized: false,
   isLoad: false,
 }
+
 type InitialStateType = typeof initialState
 export const appReducer = (
   state: InitialStateType = initialState,
@@ -57,9 +62,21 @@ export const appInitialTC = () => (dispatch: Dispatch) => {
 //ACTIONS CREATOR
 export const setAppStatusAC = (status: RequestStatusType) =>
   ({ type: 'APP/SET-STATUS', status } as const)
-export const setAppErrorAC = (error: string | null) => ({ type: 'APP/SET-ERROR', error } as const)
-export const setAppInitialAC = (value: boolean) => ({ type: 'APP/SET-APP-INITIAL', value } as const)
-export const setAppLoadAC = (value: boolean) => ({ type: 'APP/SET-APP-LOAD', value } as const)
+export const setAppErrorAC = (error: string | null) =>
+  ({
+    type: 'APP/SET-ERROR',
+    error,
+  } as const)
+export const setAppInitialAC = (value: boolean) =>
+  ({
+    type: 'APP/SET-APP-INITIAL',
+    value,
+  } as const)
+export const setAppLoadAC = (value: boolean) =>
+  ({
+    type: 'APP/SET-APP-LOAD',
+    value,
+  } as const)
 //TYPES
 type SetAppStatusAT = ReturnType<typeof setAppStatusAC>
 type SetAppErrorAT = ReturnType<typeof setAppErrorAC>

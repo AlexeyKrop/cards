@@ -1,13 +1,13 @@
 import { Dispatch } from 'redux'
-import { authMe, profileAPI, UserType } from '../../api/api'
-import { setAppLoadAC, setAppStatusAC } from './appReducer'
-import { setIsLoginAC } from './authReducer'
+
+import { profileAPI, UserType } from '../../api/api'
 
 const initialState = {
   user: {
     name: '',
   } as UserType,
 }
+
 type InitialStateType = typeof initialState
 export const profileReducer = (
   state: InitialStateType = initialState,

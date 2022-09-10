@@ -1,8 +1,10 @@
 import React from 'react'
-import { useFormik } from 'formik'
+
 import { Button, TextField } from '@mui/material'
-import { useAppDispatch } from '../../customHooks/hooks'
+import { useFormik } from 'formik'
+
 import { registrationTC } from '../../bll/reducers/registartionReducer'
+import { useAppDispatch } from '../../customHooks/hooks'
 
 export const Registration = () => {
   const dispatch = useAppDispatch()
@@ -15,6 +17,7 @@ export const Registration = () => {
       dispatch(registrationTC(values))
     },
   })
+
   return (
     <form onSubmit={formik.handleSubmit}>
       <label htmlFor="email">Email Address</label>

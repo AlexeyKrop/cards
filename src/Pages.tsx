@@ -1,12 +1,15 @@
 import React from 'react'
+
 import { Navigate, Route, Routes } from 'react-router-dom'
+
+import CreatePassword from './components/CreatePassword/CreatePassword'
+import { CustomStand } from './components/CustomStand/CustomStand'
+import { Error404 } from './components/Error404/Error404'
 import { Login } from './components/Login/Login'
 import { Profile } from './components/Profile/Profile'
 import { RecoveryPassword } from './components/RecoveryPassword/RecoveryPassword'
-import { Error404 } from './components/Error404/Error404'
-import CreatePassword from './components/CreatePassword/CreatePassword'
 import { Registration } from './components/Registration/Regirstration'
-import { CustomStand } from './components/CustomStand/CustomStand'
+
 export const PATH = {
   LOGIN: '/login',
   PROFILE: '/profile',
